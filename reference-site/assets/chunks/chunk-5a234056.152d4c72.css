@@ -1,0 +1,1 @@
+.item-list-box{display:grid;grid-template-columns:repeat(4,auto);grid-gap:10px}.item-list-box>div{padding:5px;display:grid;grid-template-columns:100px auto;border:2px solid #000;grid-gap:10px}.item-list-box>div img{max-width:100px}.item-list-box>div.active{border:2px solid gold;box-shadow:0 0 0 4px #067a6c}

@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0c1412"],{"44ea":function(e,a,t){"use strict";t.r(a);var o=t("9ab4"),r=t("1b40");let n=class extends r["c"]{created(){localStorage.removeItem("vuex"),localStorage.removeItem("app"),localStorage.removeItem("appVersion"),setTimeout(()=>{this.$router.push({name:"Login"})},3e3)}render(e){return e("span")}};n=Object(o["a"])([r["a"]],n),a["default"]=n}}]);
+//# sourceMappingURL=chunk-2d0c1412.0f317a9e.js.map

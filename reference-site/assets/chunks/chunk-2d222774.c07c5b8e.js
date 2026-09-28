@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d222774"],{cf72:function(t,a,e){"use strict";e.r(a);var s=e("9ab4"),c=e("1b40"),i=e("0ab8");let n=class extends i["a"]{constructor(){super(...arguments),this.type="withdraws",this.createName="Transaction.withdraw.create",this.editName="Transaction.withdraw.edit"}};n=Object(s["a"])([c["a"]],n),a["default"]=n}}]);
+//# sourceMappingURL=chunk-2d222774.c07c5b8e.js.map

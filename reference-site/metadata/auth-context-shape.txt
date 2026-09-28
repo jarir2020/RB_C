@@ -1,0 +1,5 @@
+branches=8
+permissions=0
+routes=14
+logs=27
+company_setting_keys=allow_branch,allow_color_variant,allow_costcenter,allow_low_alert,allow_negative_stock,allow_size_variant,alternativeUnit,amountDecimal,balanceSheetZeroFilter,block_order_lowqty,ledgerBalanceSort,productSearchWithQty,qtyDecimal,rateDecimal,showProductCode,vendorWiseSearch

@@ -1,0 +1,30 @@
+account-report_trial-balance	27049	
+auth-user	21201	object{branches,companyId,companyLogo,companyName,companySetting,currencyCode,expireLicence,has,id,image,isEmployee,logs,name,package,passwordReset,permissions,routes,startCompanyDate,token}
+branches	6289	array[8]
+brands	302	object{data}
+categories	5066	object{data}
+check-licence	10	
+client-list	16391	object{exception,file,line,message,trace}
+companies	16391	object{exception,file,line,message,trace}
+company_active	27049	
+contacts	2	array[0]
+currencies	14212	array[164]
+dropdowns	91	object{errors,message}
+home_sales	145	object{errors,message}
+home_sales-cards	205	object{errors,message}
+home_sales-purchase-chart	145	object{errors,message}
+home_top-categories	145	object{errors,message}
+home_top-customers	145	object{errors,message}
+home_top-products	145	object{errors,message}
+home_total-customer-count	145	object{errors,message}
+home_total-product-count	145	object{errors,message}
+home_total-sell-count	145	object{errors,message}
+home_warehouse-summery	145	object{errors,message}
+inventory-purchase	145	object{errors,message}
+ledger-groups	12950	array[37]
+orders	855	object{data,links,meta}
+products	75157	object{data,links,meta}
+status-list	91	object{errors,message}
+stock-keeping	7	
+stock-report_current-stocks	27049	
+warehouse-summery	16391	object{exception,file,line,message,trace}

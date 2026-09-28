@@ -1,0 +1,1553 @@
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Redbook One | Accounting, Inventory &amp; Branch Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#f5fafc",
+                        "surface-container-highest": "#dee3e5",
+                        "secondary-fixed-dim": "#b7c4ff",
+                        "on-secondary-fixed": "#001551",
+                        "on-primary-fixed": "#410004",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#4069f2",
+                        "surface": "#f5fafc",
+                        "outline-variant": "#e4beba",
+                        "on-surface": "#171c1e",
+                        "tertiary": "#9e3a3d",
+                        "error": "#ba1a1a",
+                        "primary": "#b61722",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#fffbff",
+                        "surface-container-low": "#eff4f6",
+                        "surface-container": "#eaeff1",
+                        "outline": "#8f6f6d",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e4e9eb",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#82252a",
+                        "tertiary-fixed-dim": "#ffb3b1",
+                        "on-background": "#171c1e",
+                        "on-secondary-fixed-variant": "#0039b5",
+                        "primary-fixed": "#ffdad7",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#edf1f3",
+                        "on-tertiary-fixed": "#410007",
+                        "background": "#f5fafc",
+                        "secondary-fixed": "#dce1ff",
+                        "primary-fixed-dim": "#ffb3ad",
+                        "tertiary-container": "#be5254",
+                        "tertiary-fixed": "#ffdad8",
+                        "surface-tint": "#b91a24",
+                        "primary-container": "#da3437",
+                        "surface-dim": "#d6dbdd",
+                        "secondary": "#1d4ed8",
+                        "on-surface-variant": "#5b403e",
+                        "on-primary-fixed-variant": "#930013",
+                        "on-secondary-container": "#fffbff",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#2c3133",
+                        "surface-variant": "#dee3e5",
+                        "on-tertiary-container": "#fffbff",
+                        "inverse-primary": "#ffb3ad"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+
+   
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5fafc;
+            color: #171c1e;
+            scroll-behavior: smooth;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .bg-primary-gradient {
+            background: linear-gradient(135deg, #b61722 0%, #da3437 100%);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #b61722;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: #b61722;
+        }
+
+        .pricing-card {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .pricing-card:hover:not(.bg-primary-gradient) {
+            border-color: #b61722 !important;
+            box-shadow: 0 10px 30px -10px rgba(182, 23, 34, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .bg-primary-gradient:hover {
+            box-shadow: 0 20px 40px -10px rgba(182, 23, 34, 0.4);
+            transform: translateY(-8px);
+        }
+    </style>
+     </head>
+
+
+<body class="bg-surface text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+    <!-- TopNavBar -->
+    <nav id="nav" class="fixed top-0 w-full z-50 bg-[#f5fafc]/70 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-8 py-4 w-full">
+            <div class="text-2xl font-black tracking-tighter text-[#b61722]">Redbook One</div>
+
+
+                      <div class="hidden md:flex items-center space-x-8">
+                <a class="nav-link active font-manrope font-bold text-sm tracking-tight text-[#171c1e] hover:text-[#b61722] transition-colors" href="/">Home</a>
+                <a class="nav-link font-manrope font-bold text-sm tracking-tight text-[#171c1e] hover:text-[#b61722] transition-colors" href="#clients">Our Clients</a>
+                <a class="nav-link font-manrope font-bold text-sm tracking-tight text-[#171c1e] hover:text-[#b61722] transition-colors" href="#features">Features</a>
+                <a class="nav-link font-manrope font-bold text-sm tracking-tight text-[#171c1e] hover:text-[#b61722] transition-colors" href="#packages">Packages</a>
+                <a class="nav-link font-manrope font-bold text-sm tracking-tight text-[#171c1e] hover:text-[#b61722] transition-colors" href="#feedbacks">Client Feedbacks</a>
+            </div>
+    <div class="flex items-center space-x-4">
+                <button id="loginBtn" class="font-manrope font-bold text-sm tracking-tight text-[#171c1e] px-4 py-2 hover:bg-[#eff4f6] rounded-full transition-all">Login</button>
+                <a class="bg-primary-gradient text-white font-manrope font-bold text-sm tracking-tight px-6 py-2.5 rounded-full scale-95 active:scale-90 transition-transform shadow-md inline-block" href="#packages">Register</a>
+            </div>
+             
+          
+        </div>
+    </nav>
+    <!-- Hero Section -->
+
+
+  <!-- drawer component -->
+<div id="drawer-contact" class="fixed top-0 right-0 z-[100] h-screen p-4 overflow-y-auto transition-transform translate-x-full bg-white w-80 dark:bg-gray-800">
+  <h5 id="drawer-label" class="inline-flex items-center mb-6 text-base font-semibold text-gray-500 uppercase dark:text-gray-400">
+    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.5 8V4.5a3.5 3.5 0 1 0-7 0V8M8 12.167v3M2 8h12a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/>
+    </svg>
+    <span class="ml-2">Login</span></h5>
+  <button type="button" id="closeLogin"  class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 right-2.5 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white" >
+     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+     </svg>
+     <span class="sr-only">Close menu</span>
+  </button>
+  <div  class="mb-6" action="https://redcom.cloud/admin/login"  id="onlogin" >
+     <div class="mb-6">
+        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
+        <input type="email" name="email" id="loginEmail" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required>
+        <div class=" text-red-500 text-sm" id="loginEmailError"></div>
+     </div>
+     <div class="mb-6">
+        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+        <input type="password" name="password" id="loginPassword"  class="bg-gray-50 border border-gray-300  text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Password here" required>
+        <div class=" text-red-500 text-sm" id="loginPasswordError"></div>
+      </div>
+    
+     <button type="button" id="onLoginSubmit" class="text-white bg-blue-700 hover:bg-blue-800 w-full focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 block">Submit</button>
+    </div>
+ 
+</div>
+
+
+       <section class="relative pt-32 pb-24 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="relative z-10">
+                <span class="inline-block py-1 px-3 rounded-full bg-primary-fixed text-on-primary-fixed-variant text-xs font-bold tracking-widest uppercase mb-6">Master Your Ledger</span>
+                <h1 class="text-6xl md:text-7xl font-extrabold text-on-surface leading-[1.1] tracking-tighter mb-8">
+                    Accounting. <br />
+                    <span class="text-primary">Inventory.</span> <br />
+                    Intelligence.
+                </h1>
+                <p class="text-lg text-on-surface-variant leading-relaxed max-w-xl mb-10">
+                    Empower your business with Redbook One—the sovereign ledger for modern enterprises. Seamlessly manage multi-branch operations, real-time inventory, and complex financial accounting in one unified, editorial-grade interface.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="https://redcom.cloud/register/2" class="bg-primary-gradient text-on-primary px-8 py-4 rounded-full font-bold text-lg flex items-center gap-2 hover:shadow-xl transition-shadow">
+                        Start Free Trial
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </a>
+                    <button class="bg-surface-container-high text-on-surface px-8 py-4 rounded-full font-bold text-lg hover:bg-surface-container-highest transition-colors">
+                        View Demo
+                    </button>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="absolute inset-0 bg-secondary/5 rounded-[3rem] -rotate-3 blur-3xl"></div>
+                <div class="relative z-10 rounded-xl overflow-hidden shadow-2xl border border-outline-variant/20 bg-surface-container-lowest">
+                    <!-- Browser Top Bar -->
+                    <div class="bg-surface-container-high px-4 py-2 flex items-center gap-1.5 border-b border-outline-variant/10">
+                        <div class="w-2 h-2 rounded-full bg-error/40"></div>
+                        <div class="w-2 h-2 rounded-full bg-primary/40"></div>
+                        <div class="w-2 h-2 rounded-full bg-secondary/40"></div>
+                        <div class="mx-auto bg-surface-container-lowest px-4 py-0.5 rounded text-[10px] text-on-surface-variant/50 flex items-center gap-1">
+                            <span class="material-symbols-outlined text-[10px]">lock</span> app.redbookone.com
+                        </div>
+                    </div>
+                    <!-- Screenshot -->
+                    <img alt="Redbook One Dashboard" class="w-full h-auto block" data-alt="Screenshot of the Redbook One sales management dashboard showing various financial metrics like orders, sales, and total products with a clean modern interface." src="https://lh3.googleusercontent.com/aida/ADBb0uga0fHq1uJrE2y5kG7fBzGfEiaQ-s_LSy0N7q8HHM610lnRBwlyOvFUR_ozN8niZAQN2WqMrnJZPLfQ5lIfYGzprYftx3gDXYtiYHoGvNlcjHHQVBvZI9D8edXZ2VVgjj-1igQBCN3iru57G6kUaJheMecaWAXvHeDLM_I8zqO_pZRu-wCBRE0SnWe6rwC3Uma7QjRtEG1XTyg-PAxulUlUwyonHX99Q-GBnVt03waDeIsW1m4OGvmyY-kGGafK5r-u_X3JwnszIw" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Our Clients Section -->
+    <section class="py-24 bg-surface-container-low" id="clients">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-black text-on-surface mb-4">Our Trusted Clients</h2>
+                <p class="text-on-surface-variant text-lg max-w-2xl mx-auto">Empowering industry leaders across diverse sectors with precision accounting and management solutions.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Row 1 -->
+                 
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/02dppDI1LECVxMrPGueNHLFxGNpWxfsrNvt3lTb1.jpg.jpg"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">California Fried Chicken &amp; Pastry Shop</h4>
+                                                   <p class="text-[10px] text-on-surface-variant uppercase tracking-wider">
+                        House #04, Road #16(new), Old #27, Dhanmondi R/A Dhaka 1209.
+                        </p>  
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/default/hero.png"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">Masa Electronics Gallery</h4>
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/default/hero.png"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">CHATKHIL ELITE CLUB</h4>
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/default/hero.png"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">KB Petrochemicals Ltd.</h4>
+                                                   <p class="text-[10px] text-on-surface-variant uppercase tracking-wider">
+                        SKS Tower (Level-08), 7, VIP Road, Mohakhali, Dhaka-1206
+                        </p>  
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/XEzf9Q1wCtC6lrq60Ds9bh7ntDZDqq28AFynSRl9.jpg.jpeg"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">Popular Medical College &amp; Hospital Ltd.</h4>
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/HxT6EtIKwnKLOrwvYHGqwGxJY6EVxb0iN3Y4bhCM.png.png"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">The Quality</h4>
+                                                   <p class="text-[10px] text-on-surface-variant uppercase tracking-wider">
+                        Munshirhat Bazar, Chauddagram, Cumillas
+                        </p>  
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/AlRwAAIjqs2GoUg2GQ5R4hiFmX0yEtLGe5WlSxPX.png.png"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">Mobile Park</h4>
+                                                   <p class="text-[10px] text-on-surface-variant uppercase tracking-wider">
+                        Shop-429, Metro Shopping Mall, Old-32,New-12. Dhanmondi Dhaka-1209
+                        </p>  
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/default/hero.png"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">Younic Limited</h4>
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/1uWLEtlZbx4lxMd9ZUM2OhItTDplIMeAoYr7fDV8.jpg.jpeg"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">Wivo Corporation</h4>
+                                                   <p class="text-[10px] text-on-surface-variant uppercase tracking-wider">
+                        House#61, Road#6, Block#F, Sector#1, Aftab Nagar, Dhaka-1212.
+                        </p>  
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/default/hero.png"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">Cilo Fashion</h4>
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/3fIhXlSLrCraOTGgN5moSmun01zmFRb9vNcCgxkk.png.png"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">One Sky Communications Limited</h4>
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/default/hero.png"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">M/S Munshi Hazrat Ali &amp; Co.-Uniliver</h4>
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/default/hero.png"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">Munshi Hazrat Ali &amp; Co. (Bkash)</h4>
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/default/hero.png"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">M/S Nizam &amp; Brothers</h4>
+                                                   <p class="text-[10px] text-on-surface-variant uppercase tracking-wider">
+                        Office Bapta Bus Stand Bhula.
+                        </p>  
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/default/hero.png"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">Feni Foods</h4>
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/DG5gxVdhj4keon3o5HlRtqjsss6Y1MQxxyQMAsp9.png.png"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">MILLENIUM TRADERS</h4>
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/5yITNyGQxOCuivDJ5k9Pva1urjZLITeBWe0utmWf.jpg.JPG"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">MF &amp; RT</h4>
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/DpJo51MBr29UhNdUh1BJKk3kLVY8rWuaFg6vpMPT.jpg.png"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">Jenesa Fashion Park</h4>
+                                                   <p class="text-[10px] text-on-surface-variant uppercase tracking-wider">
+                        Bangodda Bazar
+                        </p>  
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/iVfc73B8bUhyg1xxFql0OC5XMRb8DXUXwfdjXDOC.jpg"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">S.S Computers</h4>
+                                                   <p class="text-[10px] text-on-surface-variant uppercase tracking-wider">
+                        MR Plaza ,Sylhet Road , Kushumbag , Moulvibazar Sadar
+                        </p>  
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/default/hero.png"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">Baily Priyodorshini</h4>
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/default/hero.png"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">Dim Sum King</h4>
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/default/hero.png"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">Eque Woven Bag Industries Ltd.</h4>
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/237-logos-1714910180.jpg"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">U Turn Fashion Express</h4>
+                                                   <p class="text-[10px] text-on-surface-variant uppercase tracking-wider">
+                        7/4, West Hazipara, Rampura, Dhaka-1219
+                        </p>  
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/235-logos-1705558855.png"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">NEW IDEAL BASTRA BITAN</h4>
+                                                   <p class="text-[10px] text-on-surface-variant uppercase tracking-wider">
+                        KHANDAKER SHOPPING COMPLES
+(1ST FLOOR),SHOP NO - 34 &amp; 35,
+BAGHA,RAJSHAHI
+                        </p>  
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/default/hero.png"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">Akota Poultry Firm</h4>
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/default/hero.png"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">Heroine BD</h4>
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/default/hero.png"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">Chittagong Import Zone</h4>
+                                                   <p class="text-[10px] text-on-surface-variant uppercase tracking-wider">
+                        Shah Amanat Shetu Sonzog Road, 1 Kilometer, Purba Bakalia, Chittagong.
+                        </p>  
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                                    <a href="www.muslimtelecom.com" class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/gBDPCeuYyOVVfdsG9AYiGB79O0SjqbkumzhNvKNd.jpg.jpg"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">Muslim Telecom</h4>
+                                                   <p class="text-[10px] text-on-surface-variant uppercase tracking-wider">
+                        Shop# 32-33(2nd Floor) P.A Plaza, Bus-Stand, MAnikgonj.
+                        </p>  
+                                               
+                    </div> 
+                 
+                    
+                </a>
+
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/158-logos-1672146273.jpg"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">M/S AL- KAWSAR  TRADING.</h4>
+                                                   <p class="text-[10px] text-on-surface-variant uppercase tracking-wider">
+                        Kawsar Bhabon ( Ground floor) 
+old Station road, Sylhet
+                        </p>  
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/default/hero.png"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">Akhter Enterprise</h4>
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/137-logos-1668410582.jpg"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">Eque Jute Process</h4>
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/default/hero.png"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">EQUE PAPER MILLS LTD</h4>
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                   
+                   <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 flex items-center gap-4 hover:shadow-md transition-all">
+                    
+                    <div class="w-12 flex-shrink-0 bg-surface-container flex items-center justify-center rounded-lg">
+                        
+                        <img src="https://redcom.cloud/storage/bucket/77-logos-1659364757.jpeg"/>
+                    </div>
+
+                    
+                   
+                       <div>
+                        <h4 class="text-sm font-bold text-on-surface leading-tight">AL-HAJ MOHAMMED ISHAQUE BADSHA &amp; CO.</h4>
+                                                   <p class="text-[10px] text-on-surface-variant uppercase tracking-wider">
+                        315, Dewan Chamber, Dewanhat, Chittagong.
+                        </p>  
+                                               
+                    </div> 
+                 
+                    
+                </div>
+                               
+                                 
+            
+                
+            
+              
+              
+             
+            </div>
+            <div class="mt-12 text-center">
+                <button class="bg-surface-container-highest text-on-surface font-bold px-8 py-3 rounded-full hover:bg-primary hover:text-white transition-all">
+                    View More Clients
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- Features Section -->
+    <section class="py-24 bg-surface" id="features">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-black text-on-surface mb-4">Core Platform Features</h2>
+                <p class="text-on-surface-variant text-lg max-w-2xl mx-auto">A comprehensive suite of tools designed for complete sovereignty over your business data.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Inventory Management -->
+                <div class="bg-surface-container-lowest p-8 rounded-[2rem] border border-outline-variant/20 hover:border-primary/30 transition-all group">
+                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+                        <span class="material-symbols-outlined text-primary group-hover:text-white">inventory_2</span>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-on-surface mb-4">Inventory Management</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Unlimited Stock Item and Groups</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Stock Category for parallel grouping</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Barcode creation</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Image of Stock Item</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Multiple warehouse for in and out</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Reorder Level</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Product wise profit</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Variant for product e.g. Colour, Size etc.</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Warehouse wise stock report</li>
+                    </ul>
+                </div>
+                <!-- Accounting Management -->
+                <div class="bg-surface-container-lowest p-8 rounded-[2rem] border border-outline-variant/20 hover:border-primary/30 transition-all group">
+                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+                        <span class="material-symbols-outlined text-primary group-hover:text-white">account_balance</span>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-on-surface mb-4">Accounting Management</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Unlimited level of Ledger/Groups</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Cost/Profit Centre</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Receipt, Payment, Deposit, Withdrawal</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> No debit and credit at user level</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Voucher and Invoice Print</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Daily/Periodic transaction summary</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Statement for any ledger (Cash, Bank)</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Final Reports: Trial Balance, P&amp;L, Balance Sheet</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Cost Centre wise profit and loss</li>
+                    </ul>
+                </div>
+                <!-- Branch Management -->
+                <div class="bg-surface-container-lowest p-8 rounded-[2rem] border border-outline-variant/20 hover:border-primary/30 transition-all group">
+                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+                        <span class="material-symbols-outlined text-primary group-hover:text-white">account_tree</span>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-on-surface mb-4">Branch Management</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Branch/Location identified address</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Setting up user as Branch In charge</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Specific user for specific branch</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Branch wise Profit and Loss</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Branch wise Balance Sheet</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Branch wise stock report</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Separate and Consolidated P&amp;L</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Monitoring tools for management</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Target and achievement for branches</li>
+                    </ul>
+                </div>
+                <!-- Sales Management -->
+                <div class="bg-surface-container-lowest p-8 rounded-[2rem] border border-outline-variant/20 hover:border-primary/30 transition-all group">
+                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+                        <span class="material-symbols-outlined text-primary group-hover:text-white">point_of_sale</span>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-on-surface mb-4">Sales Management</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Quotation, Sales Order, Delivery, Invoice</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Invoice Print with standard format</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> QR Code in Invoice for authenticity</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Approval option for each phase of sales</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Sales Return transaction</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Sales bill reports (Paid and Unpaid)</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Report with Delivered and Pending status</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Separate customer login portal</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Separate Customer Tab under menus</li>
+                    </ul>
+                </div>
+                <!-- Purchase Management -->
+                <div class="bg-surface-container-lowest p-8 rounded-[2rem] border border-outline-variant/20 hover:border-primary/30 transition-all group">
+                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+                        <span class="material-symbols-outlined text-primary group-hover:text-white">shopping_cart</span>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-on-surface mb-4">Purchase Management</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Purchase Order, Goods Receipt, Bill</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Invoice Print with standard format</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> QR Code in Invoice for authenticity</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Approval option for each phase</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Purchase Return transaction</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Purchase bill reports (Paid and Unpaid)</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Report with Delivered and Pending status</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Separate Vendor login portal</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Separate Vendor Tab under menus</li>
+                    </ul>
+                </div>
+                <!-- POS (Sales with Barcode) -->
+                <div class="bg-surface-container-lowest p-8 rounded-[2rem] border border-outline-variant/20 hover:border-primary/30 transition-all group">
+                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+                        <span class="material-symbols-outlined text-primary group-hover:text-white">barcode_scanner</span>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-on-surface mb-4">POS (Sales with Barcode)</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Barcode creation option</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Barcode Printing</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Multiple terminal for POS transactions</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Multiple Payment mode (Cash, Bkash, Card)</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Separate report for POS Transactions</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Scanning and Manual selection option</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Link to accounting and inventory system</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> User/terminal wise reports</li>
+                        <li class="flex items-start gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span> Integrated vendor management</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Packages Section (Pricing) -->
+    <section class="py-24 bg-surface" id="packages">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-black text-on-surface mb-4">Transparent Investment</h2>
+                <p class="text-on-surface-variant text-lg max-w-2xl mx-auto">Select the precision tools your business requires. Scale as you grow.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
+                                    
+            
+                <!-- Invoice Package -->
+                <div class="bg-surface-container-low p-8 rounded-3xl flex flex-col border border-outline-variant/10 hover:shadow-xl transition-shadow pricing-card" data-base-price="500" data-base-users="3">
+                    <div class="mb-6">
+                        <h3 class="text-lg font-extrabold text-on-surface mb-2">Small Pack</h3>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-3xl font-black text-primary total-price">1000</span>
+                            <span class="text-on-surface-variant text-sm">BDT/Monthly</span>
+                        </div>
+                        <p class="text-[10px] text-on-surface-variant mt-1">+1000 BDT per additional user</p>
+                        <span class="inline-block mt-2 text-[10px] font-black tracking-widest uppercase text-secondary">Free for 7 Days</span>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-2">Number of Users</label>
+                        <div class="flex items-center gap-3">
+                            <button class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-highest transition-colors decrease-users"><span class="material-symbols-outlined text-sm">remove</span></button>
+                            <span class="font-bold text-lg user-count">3</span>
+                            <button class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-highest transition-colors increase-users"><span class="material-symbols-outlined text-sm">add</span></button>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                                                     <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            
+                            
+                                                                  <span class="material-symbols-outlined text-error text-sm">close</span>
+                                                           POS
+                        </li>
+                                                     <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            
+                            
+                                                                  <span class="material-symbols-outlined text-error text-sm">close</span>
+                                                           Accounting
+                        </li>
+                                                     <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            
+                            
+                                                                  <span class="material-symbols-outlined text-error text-sm">close</span>
+                                                           Sales and Distribution
+                        </li>
+                                                     <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            
+                            
+                                                                  <span class="material-symbols-outlined text-error text-sm">close</span>
+                                                           Purchase Management
+                        </li>
+                                                     <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            
+                            
+                                                                  <span class="material-symbols-outlined text-error text-sm">close</span>
+                                                           Inventory Management
+                        </li>
+                                               
+                       
+                    </ul>
+                      <a class="w-full py-3 rounded-xl border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all mt-auto text-center inline-block" href="https://www.redbookone.com/register/2">Select Plan</a>
+
+                </div>
+                                    
+            
+                <!-- Invoice Package -->
+                <div class="bg-surface-container-low p-8 rounded-3xl flex flex-col border border-outline-variant/10 hover:shadow-xl transition-shadow pricing-card" data-base-price="500" data-base-users="3">
+                    <div class="mb-6">
+                        <h3 class="text-lg font-extrabold text-on-surface mb-2">Customized Plan</h3>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-3xl font-black text-primary total-price">500</span>
+                            <span class="text-on-surface-variant text-sm">BDT/Monthly</span>
+                        </div>
+                        <p class="text-[10px] text-on-surface-variant mt-1">+500 BDT per additional user</p>
+                        <span class="inline-block mt-2 text-[10px] font-black tracking-widest uppercase text-secondary">Free for 7 Days</span>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-2">Number of Users</label>
+                        <div class="flex items-center gap-3">
+                            <button class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-highest transition-colors decrease-users"><span class="material-symbols-outlined text-sm">remove</span></button>
+                            <span class="font-bold text-lg user-count">3</span>
+                            <button class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-highest transition-colors increase-users"><span class="material-symbols-outlined text-sm">add</span></button>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                                                     <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            
+                            
+                                                                  <span class="material-symbols-outlined text-error text-sm">close</span>
+                                                           Accounting
+                        </li>
+                                                     <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            
+                            
+                                                                  <span class="material-symbols-outlined text-error text-sm">close</span>
+                                                           Inventory Management
+                        </li>
+                                                     <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            
+                            
+                                                                  <span class="material-symbols-outlined text-error text-sm">close</span>
+                                                           Purchase Management
+                        </li>
+                                                     <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            
+                            
+                                                                  <span class="material-symbols-outlined text-error text-sm">close</span>
+                                                           Sales and Distribution
+                        </li>
+                                                     <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            
+                            
+                                                                  <span class="material-symbols-outlined text-error text-sm">close</span>
+                                                           POS
+                        </li>
+                                               
+                       
+                    </ul>
+                      <a class="w-full py-3 rounded-xl border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all mt-auto text-center inline-block" href="https://www.redbookone.com/register/3">Select Plan</a>
+
+                </div>
+                                    
+            
+                <!-- Invoice Package -->
+                <div class="bg-surface-container-low p-8 rounded-3xl flex flex-col border border-outline-variant/10 hover:shadow-xl transition-shadow pricing-card" data-base-price="500" data-base-users="3">
+                    <div class="mb-6">
+                        <h3 class="text-lg font-extrabold text-on-surface mb-2">Complete Project</h3>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-3xl font-black text-primary total-price">5000</span>
+                            <span class="text-on-surface-variant text-sm">BDT/Monthly</span>
+                        </div>
+                        <p class="text-[10px] text-on-surface-variant mt-1">+5000 BDT per additional user</p>
+                        <span class="inline-block mt-2 text-[10px] font-black tracking-widest uppercase text-secondary">Free for 7 Days</span>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-2">Number of Users</label>
+                        <div class="flex items-center gap-3">
+                            <button class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-highest transition-colors decrease-users"><span class="material-symbols-outlined text-sm">remove</span></button>
+                            <span class="font-bold text-lg user-count">3</span>
+                            <button class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-highest transition-colors increase-users"><span class="material-symbols-outlined text-sm">add</span></button>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                                                     <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            
+                            
+                                                                  <span class="material-symbols-outlined text-error text-sm">close</span>
+                                                           Accounting
+                        </li>
+                                                     <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            
+                            
+                                                                  <span class="material-symbols-outlined text-error text-sm">close</span>
+                                                           POS
+                        </li>
+                                                     <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            
+                            
+                                                                  <span class="material-symbols-outlined text-error text-sm">close</span>
+                                                           Sales and Distribution
+                        </li>
+                                                     <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            
+                            
+                                                                  <span class="material-symbols-outlined text-error text-sm">close</span>
+                                                           Purchase Management
+                        </li>
+                                                     <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            
+                            
+                                                                  <span class="material-symbols-outlined text-error text-sm">close</span>
+                                                           Inventory Management
+                        </li>
+                                               
+                       
+                    </ul>
+                      <a class="w-full py-3 rounded-xl border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all mt-auto text-center inline-block" href="https://www.redbookone.com/register/4">Select Plan</a>
+
+                </div>
+                                <!-- Accounting Package -->
+                <!-- <div class="bg-surface-container-low p-8 rounded-3xl flex flex-col border border-outline-variant/10 hover:shadow-xl transition-shadow pricing-card" data-base-price="1000" data-base-users="2">
+                    <div class="mb-6">
+                        <h3 class="text-lg font-extrabold text-on-surface mb-2">Accounting Package</h3>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-3xl font-black text-primary total-price">1000</span>
+                            <span class="text-on-surface-variant text-sm">BDT/Monthly</span>
+                        </div>
+                        <p class="text-[10px] text-on-surface-variant mt-1">+1,000 BDT per additional user</p>
+                        <span class="inline-block mt-2 text-[10px] font-black tracking-widest uppercase text-secondary">Free for 7 Days</span>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-2">Number of Users</label>
+                        <div class="flex items-center gap-3">
+                            <button class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-highest transition-colors decrease-users"><span class="material-symbols-outlined text-sm">remove</span></button>
+                            <span class="font-bold text-lg user-count">2</span>
+                            <button class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-highest transition-colors increase-users"><span class="material-symbols-outlined text-sm">add</span></button>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            <span class="material-symbols-outlined text-secondary text-sm">check</span> Inventory Package for 1 Branch with 2 users
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            <span class="material-symbols-outlined text-secondary text-sm">check</span> Category, Vendor, and Brand wise stock keeping
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            <span class="material-symbols-outlined text-secondary text-sm">check</span> Max 1500 items (Customizable)
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            <span class="material-symbols-outlined text-secondary text-sm">check</span> Unlimited Purchase &amp; Sales Invoices
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            <span class="material-symbols-outlined text-secondary text-sm">check</span> Ageing for Receivables &amp; Payables
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            <span class="material-symbols-outlined text-secondary text-sm">check</span> Item movement analysis
+                        </li>
+                    </ul>
+                    <button class="w-full py-3 rounded-xl border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all mt-auto">Select Plan</button>
+                </div> -->
+                <!-- Accounting & Inventory (Most Popular) -->
+                <!-- <div class="bg-surface-container-low p-8 rounded-3xl flex flex-col border border-outline-variant/10 hover:shadow-xl transition-shadow pricing-card relative" data-base-price="2000" data-base-users="2">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-on-surface text-white text-[10px] px-4 py-1 rounded-full font-bold uppercase tracking-widest">Most Popular</div>
+                    <div class="mb-6">
+                        <h3 class="text-lg font-extrabold text-on-surface mb-2">Accounting &amp; Inventory</h3>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-3xl font-black text-primary total-price">2000</span>
+                            <span class="text-on-surface-variant text-sm">BDT/Monthly</span>
+                        </div>
+                        <p class="text-[10px] text-on-surface-variant mt-1">+1,000 BDT per additional user</p>
+                        <span class="inline-block mt-2 text-[10px] font-black tracking-widest uppercase text-secondary">Free for 7 Days</span>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-2">Number of Users</label>
+                        <div class="flex items-center gap-3">
+                            <button class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-highest transition-colors decrease-users"><span class="material-symbols-outlined text-sm">remove</span></button>
+                            <span class="font-bold text-lg user-count text-on-surface">2</span>
+                            <button class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-highest transition-colors increase-users"><span class="material-symbols-outlined text-sm">add</span></button>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            <span class="material-symbols-outlined text-secondary text-sm">check</span> Inventory Package for 1 Branch with 2 users
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            <span class="material-symbols-outlined text-secondary text-sm">check</span> Category wise, Vendor wise, Brand wise stock keeping
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            <span class="material-symbols-outlined text-secondary text-sm">check</span> Max 1500 stock items (Customizable package for more)
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            <span class="material-symbols-outlined text-secondary text-sm">check</span> Unlimited Purchase and Sales Invoice
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            <span class="material-symbols-outlined text-secondary text-sm">check</span> Ageing for Receivables and Payables
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            <span class="material-symbols-outlined text-secondary text-sm">check</span> Item movement analysis
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            <span class="material-symbols-outlined text-secondary text-sm">check</span> Multi-dimensional inventory reports
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            <span class="material-symbols-outlined text-secondary text-sm">check</span> Purchase &amp; Sales status reports
+                        </li>
+                    </ul>
+                    <a class="w-full py-3 rounded-xl border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all mt-auto text-center inline-block" href="https://www.redbookone.com/register/2">Select Plan</a>
+                </div> -->
+                <!-- POS & Inventory -->
+                <!-- <div class="bg-surface-container-low p-8 rounded-3xl flex flex-col border border-outline-variant/10 hover:shadow-xl transition-shadow pricing-card" data-base-price="1000" data-base-users="2">
+                    <div class="mb-6">
+                        <h3 class="text-lg font-extrabold text-on-surface mb-2">POS &amp; Inventory</h3>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-3xl font-black text-primary total-price">1000</span>
+                            <span class="text-on-surface-variant text-sm">BDT/Monthly</span>
+                        </div>
+                        <p class="text-[10px] text-on-surface-variant mt-1">+1,000 BDT per additional user</p>
+                        <span class="inline-block mt-2 text-[10px] font-black tracking-widest uppercase text-on-surface-variant opacity-60">Professional Retail</span>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-2">Number of Users</label>
+                        <div class="flex items-center gap-3">
+                            <button class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-highest transition-colors decrease-users"><span class="material-symbols-outlined text-sm">remove</span></button>
+                            <span class="font-bold text-lg user-count">2</span>
+                            <button class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-highest transition-colors increase-users"><span class="material-symbols-outlined text-sm">add</span></button>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            <span class="material-symbols-outlined text-secondary text-sm">check</span> Barcode Tracking
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            <span class="material-symbols-outlined text-secondary text-sm">check</span> Auto-generate Barcodes
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-on-surface-variant">
+                            <span class="material-symbols-outlined text-secondary text-sm">check</span> Generate/Print Labels
+                        </li>
+                    </ul>
+                    <button class="w-full py-3 rounded-xl border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all mt-auto">Select Plan</button>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+
+       <!-- Clients Section (Ticker Style) -->
+    <section class="py-16 bg-surface-container-low">
+        <div class="max-w-7xl mx-auto px-8">
+            <p class="text-center font-black text-xs uppercase tracking-[0.3em] text-on-surface-variant/40 mb-12">Trusted by modern enterprises</p>
+            <div class="flex flex-wrap justify-center items-center gap-16 grayscale opacity-50 hover:grayscale-0 transition-all duration-500">
+                <div class="text-3xl font-black text-on-surface flex items-center gap-2"><span class="material-symbols-outlined">corporate_fare</span> Arla Dano</div>
+                <div class="text-3xl font-black text-on-surface flex items-center gap-2"><span class="material-symbols-outlined">local_hospital</span> Popular Diagnostic Centre</div>
+                <div class="text-3xl font-black text-on-surface flex items-center gap-2"><span class="material-symbols-outlined">factory</span> Abdul Monem Limited</div>
+                <div class="text-3xl font-black text-on-surface flex items-center gap-2"><span class="material-symbols-outlined">computer</span> Creative IT</div>
+            </div>
+        </div>
+    </section>
+    <!-- Feedbacks Section -->
+    <section class="py-24 bg-surface-container-lowest" id="feedbacks">
+        <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div class="lg:col-span-1">
+                <h2 class="text-4xl font-black mb-6">Client<br />Feedbacks</h2>
+                <p class="text-on-surface-variant mb-8">Direct experiences from business owners who have sovereign control over their ledgers.</p>
+                <div class="flex gap-2">
+                    <button class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+                        <span class="material-symbols-outlined">arrow_back</span>
+                    </button>
+                    <button class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+            <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
+                            
+         
+                <div class="bg-surface-container-low p-8 rounded-3xl relative">
+                    <span class="material-symbols-outlined text-primary/10 text-6xl absolute top-4 right-8">format_quote</span>
+                    <p class="text-on-surface mb-6 relative z-10 italic">"A nice software indeed. I can manage my accounts with branch wise records. Thanks Redcom team."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-highest">
+                            <img alt="Client Photo" class="w-full h-full object-cover" data-alt="Portrait of a smiling professional man in a business suit with a warm studio lighting background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8tNaF4Z6vsKt7UeTBWK5a2jjhH-SGIDaGm0nqSDtIxcub9KDbkeLpP3DXiuErPUo64jtsC4z5lA2OiOt_nDouVTANjN7k_1lnt53Sv7RB169w6lCUjbyjhIrt1B3dC2epLBQjYGtliQbtMrAIeRSvn9YFsqcokvtmrKsSW1qKhRuZ-qAFkQjR8C_q10iolxz2E6MO6DSzzD2se29HoF0Y3OpmW8645slsypCiUzjFpRN0FrQ291HpC8yHkref1Vigeoae5RUAvUs" />
+                        </div>
+                        <div>
+                            <p class="font-bold text-sm">U Turn</p>
+                            <p class="text-xs text-on-surface-variant">CEO, U Turn Fashion Express</p>
+                        </div>
+                    </div>
+                </div>
+                   
+         
+                <div class="bg-surface-container-low p-8 rounded-3xl relative">
+                    <span class="material-symbols-outlined text-primary/10 text-6xl absolute top-4 right-8">format_quote</span>
+                    <p class="text-on-surface mb-6 relative z-10 italic">"A good software for distribution management. I can see my all stocks of any branch online. It gives me confidence on the business."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-highest">
+                            <img alt="Client Photo" class="w-full h-full object-cover" data-alt="Portrait of a smiling professional man in a business suit with a warm studio lighting background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8tNaF4Z6vsKt7UeTBWK5a2jjhH-SGIDaGm0nqSDtIxcub9KDbkeLpP3DXiuErPUo64jtsC4z5lA2OiOt_nDouVTANjN7k_1lnt53Sv7RB169w6lCUjbyjhIrt1B3dC2epLBQjYGtliQbtMrAIeRSvn9YFsqcokvtmrKsSW1qKhRuZ-qAFkQjR8C_q10iolxz2E6MO6DSzzD2se29HoF0Y3OpmW8645slsypCiUzjFpRN0FrQ291HpC8yHkref1Vigeoae5RUAvUs" />
+                        </div>
+                        <div>
+                            <p class="font-bold text-sm">Meer Towseef</p>
+                            <p class="text-xs text-on-surface-variant">CEO, Akhter Enterprise</p>
+                        </div>
+                    </div>
+                </div>
+                   
+         
+                <div class="bg-surface-container-low p-8 rounded-3xl relative">
+                    <span class="material-symbols-outlined text-primary/10 text-6xl absolute top-4 right-8">format_quote</span>
+                    <p class="text-on-surface mb-6 relative z-10 italic">"I have two shops in two locations. I use Redcom for my shop management. I can see my daily sales, daily purchase, cash in, cash out and profit also. I am very happy with the software."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-highest">
+                            <img alt="Client Photo" class="w-full h-full object-cover" data-alt="Portrait of a smiling professional man in a business suit with a warm studio lighting background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8tNaF4Z6vsKt7UeTBWK5a2jjhH-SGIDaGm0nqSDtIxcub9KDbkeLpP3DXiuErPUo64jtsC4z5lA2OiOt_nDouVTANjN7k_1lnt53Sv7RB169w6lCUjbyjhIrt1B3dC2epLBQjYGtliQbtMrAIeRSvn9YFsqcokvtmrKsSW1qKhRuZ-qAFkQjR8C_q10iolxz2E6MO6DSzzD2se29HoF0Y3OpmW8645slsypCiUzjFpRN0FrQ291HpC8yHkref1Vigeoae5RUAvUs" />
+                        </div>
+                        <div>
+                            <p class="font-bold text-sm">Nasir Uddin</p>
+                            <p class="text-xs text-on-surface-variant">CEO, Ayojon Food</p>
+                        </div>
+                    </div>
+                </div>
+                   
+         
+                <div class="bg-surface-container-low p-8 rounded-3xl relative">
+                    <span class="material-symbols-outlined text-primary/10 text-6xl absolute top-4 right-8">format_quote</span>
+                    <p class="text-on-surface mb-6 relative z-10 italic">"Its an excellent software for store."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-highest">
+                            <img alt="Client Photo" class="w-full h-full object-cover" data-alt="Portrait of a smiling professional man in a business suit with a warm studio lighting background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8tNaF4Z6vsKt7UeTBWK5a2jjhH-SGIDaGm0nqSDtIxcub9KDbkeLpP3DXiuErPUo64jtsC4z5lA2OiOt_nDouVTANjN7k_1lnt53Sv7RB169w6lCUjbyjhIrt1B3dC2epLBQjYGtliQbtMrAIeRSvn9YFsqcokvtmrKsSW1qKhRuZ-qAFkQjR8C_q10iolxz2E6MO6DSzzD2se29HoF0Y3OpmW8645slsypCiUzjFpRN0FrQ291HpC8yHkref1Vigeoae5RUAvUs" />
+                        </div>
+                        <div>
+                            <p class="font-bold text-sm">Hannan Helal</p>
+                            <p class="text-xs text-on-surface-variant">CEO, Popular Medical College &amp; Hospital Ltd.</p>
+                        </div>
+                    </div>
+                </div>
+                   
+         
+                <div class="bg-surface-container-low p-8 rounded-3xl relative">
+                    <span class="material-symbols-outlined text-primary/10 text-6xl absolute top-4 right-8">format_quote</span>
+                    <p class="text-on-surface mb-6 relative z-10 italic">"I found this software very nice and easy. It gives me everyday reports ready for management."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-highest">
+                            <img alt="Client Photo" class="w-full h-full object-cover" data-alt="Portrait of a smiling professional man in a business suit with a warm studio lighting background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8tNaF4Z6vsKt7UeTBWK5a2jjhH-SGIDaGm0nqSDtIxcub9KDbkeLpP3DXiuErPUo64jtsC4z5lA2OiOt_nDouVTANjN7k_1lnt53Sv7RB169w6lCUjbyjhIrt1B3dC2epLBQjYGtliQbtMrAIeRSvn9YFsqcokvtmrKsSW1qKhRuZ-qAFkQjR8C_q10iolxz2E6MO6DSzzD2se29HoF0Y3OpmW8645slsypCiUzjFpRN0FrQ291HpC8yHkref1Vigeoae5RUAvUs" />
+                        </div>
+                        <div>
+                            <p class="font-bold text-sm">Bidyut Kumar Bala</p>
+                            <p class="text-xs text-on-surface-variant">CEO, California Fried Chicken &amp; Pastry Shop</p>
+                        </div>
+                    </div>
+                </div>
+               
+        </div>
+    </section>
+
+  
+
+ 
+
+
+   
+
+
+    <!-- Footer -->
+    <footer class="bg-[#eff4f6] dark:bg-[#171c1e] w-full py-12 px-8 border-t border-[#e4beba]/15">
+        <div class="max-w-7xl mx-auto w-full">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+                <div>
+                    <div class="font-manrope font-extrabold text-[#b61722] text-2xl mb-6">Redbook One</div>
+                    <p class="font-inter text-xs leading-relaxed text-[#171c1e]/60 dark:text-[#eff4f6]/60 max-w-sm">
+                        Building the future of sovereign business management. Accounting, Inventory, and Intelligence unified in one editorial experience.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-8">
+                    <div class="flex flex-col space-y-3">
+                        <h4 class="font-bold text-xs uppercase tracking-widest text-[#171c1e]">Product</h4>
+                        <a class="font-inter text-xs leading-relaxed text-[#171c1e]/60 hover:text-[#b61722] hover:translate-x-1 transition-transform" href="#features">Features</a>
+                        <a class="font-inter text-xs leading-relaxed text-[#171c1e]/60 hover:text-[#b61722] hover:translate-x-1 transition-transform" href="#packages">Packages</a>
+                        <a class="font-inter text-xs leading-relaxed text-[#171c1e]/60 hover:text-[#b61722] hover:translate-x-1 transition-transform" href="#">Security</a>
+                    </div>
+                    <div class="flex flex-col space-y-3">
+                        <h4 class="font-bold text-xs uppercase tracking-widest text-[#171c1e]">Support</h4>
+                        <a class="font-inter text-xs leading-relaxed text-[#171c1e]/60 hover:text-[#b61722] hover:translate-x-1 transition-transform" href="#">Contact Us</a>
+                        <a class="font-inter text-xs leading-relaxed text-[#171c1e]/60 hover:text-[#b61722] hover:translate-x-1 transition-transform" href="#">Documentation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+      <link rel="modulepreload" href="https://redcom.cloud/build/assets/v-app-8fc5a6db.js" /><link rel="modulepreload" href="https://redcom.cloud/build/assets/slick-986a1b3f.js" /><link rel="modulepreload" href="https://redcom.cloud/build/assets/axios-4a70c6fc.js" /><link rel="modulepreload" href="https://redcom.cloud/build/assets/_commonjsHelpers-de833af9.js" /><script type="module" src="https://redcom.cloud/build/assets/v-app-8fc5a6db.js"></script>    <link rel="modulepreload" href="https://redcom.cloud/build/assets/new-app-088c48e5.js" /><link rel="modulepreload" href="https://redcom.cloud/build/assets/slick-986a1b3f.js" /><link rel="modulepreload" href="https://redcom.cloud/build/assets/_commonjsHelpers-de833af9.js" /><script type="module" src="https://redcom.cloud/build/assets/new-app-088c48e5.js"></script>
+
+              
+    <script>
+
+
+  
+        // Handle active state for nav links on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current) && current !== '') {
+                    link.classList.add('active');
+                } else if (current === '' && link.getAttribute('href') === '#') {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Pricing Logic
+        document.querySelectorAll('.pricing-card').forEach(card => {
+            const basePrice = parseInt(card.dataset.basePrice);
+            const baseUsers = parseInt(card.dataset.baseUsers);
+            const userCountDisplay = card.querySelector('.user-count');
+            const totalPriceDisplay = card.querySelector('.total-price');
+            const increaseBtn = card.querySelector('.increase-users');
+            const decreaseBtn = card.querySelector('.decrease-users');
+
+            let currentUsers = baseUsers;
+
+            const updateUI = () => {
+                userCountDisplay.textContent = currentUsers;
+                const extraUsers = Math.max(0, currentUsers - baseUsers);
+                const totalPrice = basePrice + (extraUsers * 1000);
+                totalPriceDisplay.textContent = totalPrice;
+            };
+
+            increaseBtn.addEventListener('click', () => {
+                currentUsers++;
+                updateUI();
+            });
+
+            decreaseBtn.addEventListener('click', () => {
+                if (currentUsers > 1) {
+                    currentUsers--;
+                    updateUI();
+                }
+            });
+        });
+
+         document.addEventListener( 'DOMContentLoaded', function() {
+        window.home();
+       
+    })
+    </script>
+
+</body>
+
+
+</html>
+
