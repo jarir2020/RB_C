@@ -1,0 +1,49 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+/auth.json
+*.key
+*.pem
+*.p12
+
+# PHP / Laravel dependencies and runtime
+/vendor
+/storage/*.key
+/storage/app/public
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/testing/*
+/storage/framework/views/*
+/storage/logs/*
+/bootstrap/cache/*
+.phpunit.result.cache
+/.phpunit.cache
+/coverage
+
+# Local databases and generated assets
+/database/*.sqlite
+/database/*.sqlite-*
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/public/fonts-manifest.dev.json
+
+# Local tools and editors
+/.codex
+/.agents
+/.cursor
+/.idea
+/.nova
+/.vscode
+/.zed
+.phpactor.json
+_ide_helper.php
+Homestead.json
+Homestead.yaml
+
+# OS files
+.DS_Store
+Thumbs.db
+*.log

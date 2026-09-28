@@ -1,0 +1,28 @@
+# RB_C
+
+> Redbook One is a Laravel 13 + Vue 3 + Inertia business command centre rebuilt from a demo reference with a redesigned interface.
+
+## Project documentation
+
+- [README.md](README.md): product scope, stack, local setup, and implemented workflows.
+- [AGENTS.md](AGENTS.md): repository conventions, safety rules, and validation commands.
+- [LICENSE](LICENSE): MIT license.
+
+## Architecture
+
+- Laravel web routes in `routes/web.php`.
+- Inertia pages in `resources/js/Pages/`.
+- Shared application shell in `resources/js/Layouts/AppLayout.vue`.
+- Eloquent models and migrations in `app/Models/` and `database/migrations/`.
+- No `routes/api.php` and no JSON API layer; forms submit to Laravel and return Inertia redirects/props.
+- Demo data is seeded by `database/seeders/DatabaseSeeder.php`.
+
+## Functional areas
+
+Dashboard, inventory and variants, barcode/price labels, sales, POS, purchases, invoices, payments, returns, branch stock transfers, accounting ledger, reports, banking, cheques, cost centres, production/BOM, contacts, branches, employees, warehouses, role access, public landing, and workspace onboarding.
+
+## Important boundaries
+
+- `.env`, local SQLite databases, `vendor/`, `node_modules/`, and compiled assets are local-only and must not be committed.
+- The reference capture is outside this project in `../reference-site/` and is not application code.
+- Never place passwords, API keys, cookies, or production credentials in source, documentation, commits, or chat.

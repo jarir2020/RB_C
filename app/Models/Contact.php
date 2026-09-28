@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+class Contact extends Model
+{
+    protected $fillable = ['name', 'kind', 'email', 'phone', 'balance'];
+
+    protected $casts = ['balance' => 'decimal:2'];
+
+    public function sales(): HasMany { return $this->hasMany(Sale::class); }
+    public function purchases(): HasMany { return $this->hasMany(Purchase::class); }
+    public function payments(): HasMany { return $this->hasMany(Payment::class); }
+}
